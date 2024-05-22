@@ -26,7 +26,8 @@ public class VisitorController {
     public String printHello() {
         return "VISITOR!";
     }
- 
+    
+    @CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
     @PostMapping("/addvisitor")
     public ResponseEntity<VisitorEntity> addVisitor(@RequestBody VisitorEntity visitor) {
         // Set timeIn and timeOut to current server time
