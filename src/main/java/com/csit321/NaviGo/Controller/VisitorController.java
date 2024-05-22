@@ -12,7 +12,7 @@ import java.util.List;
  
 @RestController
 @RequestMapping("/admin")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
 public class VisitorController {
  
     @Autowired
@@ -22,7 +22,7 @@ public class VisitorController {
     public String printHello() {
         return "VISITOR!";
     }
- 
+    @CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
     @PostMapping("/addvisitor")
     public ResponseEntity<VisitorEntity> addVisitor(@RequestBody VisitorEntity visitor) {
         List<VisitorEntity> existingVisitors = visitorService.getVisitorsByCardNo(visitor.getCardNo());
@@ -41,7 +41,7 @@ public class VisitorController {
         VisitorEntity addedVisitor = visitorService.addVisitor(visitor);
         return ResponseEntity.ok(addedVisitor);
     }
- 
+    @CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
     @GetMapping("/getAllVisitors")
     public List<VisitorEntity> getAllVisitors() {
         return visitorService.getAllVisitors();
@@ -57,7 +57,8 @@ public class VisitorController {
             return ResponseEntity.notFound().build();
         }
     }
- 
+
+    @CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
     @PutMapping("/updateVisitorTimeOut/{cardNo}")
     public ResponseEntity<VisitorEntity> updateVisitorTimeOut(@PathVariable int cardNo) {
         String formattedTime = formatDateTime(LocalDateTime.now());
