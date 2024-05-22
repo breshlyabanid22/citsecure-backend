@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/out")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
 public class TimeoutController {
 
     @Autowired
