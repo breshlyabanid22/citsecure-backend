@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
- 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import java.time.LocalDateTime;
 import java.util.List;
  
@@ -22,7 +22,6 @@ public class VisitorController {
     public String printHello() {
         return "VISITOR!";
     }
-    @CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
     @PostMapping("/addvisitor")
     public ResponseEntity<VisitorEntity> addVisitor(@RequestBody VisitorEntity visitor) {
         List<VisitorEntity> existingVisitors = visitorService.getVisitorsByCardNo(visitor.getCardNo());
@@ -41,7 +40,6 @@ public class VisitorController {
         VisitorEntity addedVisitor = visitorService.addVisitor(visitor);
         return ResponseEntity.ok(addedVisitor);
     }
-    @CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
     @GetMapping("/getAllVisitors")
     public List<VisitorEntity> getAllVisitors() {
         return visitorService.getAllVisitors();
@@ -58,7 +56,6 @@ public class VisitorController {
         }
     }
 
-    @CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
     @PutMapping("/updateVisitorTimeOut/{cardNo}")
     public ResponseEntity<VisitorEntity> updateVisitorTimeOut(@PathVariable int cardNo) {
         String formattedTime = formatDateTime(LocalDateTime.now());
