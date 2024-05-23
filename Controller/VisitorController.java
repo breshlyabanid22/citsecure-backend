@@ -40,12 +40,12 @@ public class VisitorController {
         return ResponseEntity.ok(addedVisitor);
     }
 
-
+    @CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
     @GetMapping("/getAllVisitors")
     public List<VisitorEntity> getAllVisitors() {
         return visitorService.getAllVisitors();
     }
-
+    @CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
     @GetMapping("/getVisitor/{id}")
     public ResponseEntity<VisitorEntity> getVisitorById(@PathVariable long id) {
         VisitorEntity visitor = visitorService.getVisitorById(id);
@@ -56,7 +56,7 @@ public class VisitorController {
         }
     }
      
-    
+    @CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
     @PutMapping("/updateVisitorTimeOut/{cardNo}")
     public ResponseEntity<VisitorEntity> updateVisitorTimeOut(@PathVariable int cardNo) {
         String formattedTimeOut = formatDateTime(LocalDateTime.now());
