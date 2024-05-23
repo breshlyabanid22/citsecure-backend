@@ -8,7 +8,7 @@ public class VisitorEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
     @Column(name = "card_no")
     private int cardNo;
@@ -35,11 +35,11 @@ public class VisitorEntity {
 
     // Getters and setters
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

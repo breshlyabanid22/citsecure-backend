@@ -42,7 +42,7 @@ public class TimeoutController {
     }
 
     @GetMapping("/gettimeoutbyid/{id}")
-    public ResponseEntity<TimeoutEntity> getTimeoutById(@PathVariable long id) {
+    public ResponseEntity<TimeoutEntity> getTimeoutById(@PathVariable Integer id) {
         Optional<TimeoutEntity> timeoutOptional = timeoutService.getTimeoutById(id);
         return timeoutOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -60,7 +60,7 @@ public class TimeoutController {
     }
 
     @DeleteMapping("/deletetimeout/{id}")
-    public ResponseEntity<Void> deleteTimeout(@PathVariable long id) {
+    public ResponseEntity<Void> deleteTimeout(@PathVariable Integer id) {
         boolean deleted = timeoutService.deleteTimeout(id);
         return deleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }

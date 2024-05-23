@@ -49,7 +49,7 @@ public class VisitorController {
  
  
     @GetMapping("/getVisitor/{id}")
-    public ResponseEntity<VisitorEntity> getVisitorById(@PathVariable long id) {
+    public ResponseEntity<VisitorEntity> getVisitorById(@PathVariable int id) {
         VisitorEntity visitor = visitorService.getVisitorById(id);
         if (visitor != null) {
             return ResponseEntity.ok(visitor);
