@@ -12,7 +12,7 @@ import java.util.List;
  
 @RestController
 @RequestMapping("/admin")
-@CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
+@CrossOrigin(origins = "*")
 public class VisitorController {
  
     @Autowired

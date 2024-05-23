@@ -12,7 +12,7 @@ import com.csit321.NaviGo.Service.NaviGoService;
  
 @RestController
 @RequestMapping("/User")
-@CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
+@CrossOrigin(origins = "*", methods = { "GET", "POST", "PUT", "DELETE", "OPTIONS" })
 public class NaviGoController {
  
     @Autowired
