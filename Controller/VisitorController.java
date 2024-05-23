@@ -80,8 +80,7 @@ public class VisitorController {
     }
 
 
-
-
+    @CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
     @PutMapping("/updateVisitor/{id}")
     public ResponseEntity<VisitorEntity> updateVisitor(@PathVariable long id, @RequestBody VisitorEntity updatedVisitor) {
         VisitorEntity visitor = visitorService.getVisitorById(id);
