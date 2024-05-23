@@ -75,7 +75,6 @@ public class VisitorController {
             return ResponseEntity.notFound().build();
         }
     }
-    @CrossOrigin(origins = "*", methods = { "GET", "POST", "PUT", "DELETE", "OPTIONS" })
     @PutMapping("/updateVisitor/{id}")
     public ResponseEntity<VisitorEntity> updateVisitor(@PathVariable int id, @RequestBody VisitorEntity updatedVisitor) {
         VisitorEntity visitor = visitorService.getVisitorById(id);

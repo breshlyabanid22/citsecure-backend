@@ -45,7 +45,6 @@ public class VisitorController {
         return visitorService.getAllVisitors();
     }
  
- 
     @GetMapping("/getVisitor/{id}")
     public ResponseEntity<VisitorEntity> getVisitorById(@PathVariable int id) {
         VisitorEntity visitor = visitorService.getVisitorById(id);
