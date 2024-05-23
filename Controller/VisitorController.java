@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -27,7 +27,6 @@ public class VisitorController {
         return "VISITOR!";
     }
     
-    @CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
     @PostMapping("/addvisitor")
     public ResponseEntity<VisitorEntity> addVisitor(@RequestBody VisitorEntity visitor) {
         // Set timeIn and timeOut to current server time
@@ -40,12 +39,10 @@ public class VisitorController {
         return ResponseEntity.ok(addedVisitor);
     }
 
-    @CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
     @GetMapping("/getAllVisitors")
     public List<VisitorEntity> getAllVisitors() {
         return visitorService.getAllVisitors();
     }
-    @CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
     @GetMapping("/getVisitor/{id}")
     public ResponseEntity<VisitorEntity> getVisitorById(@PathVariable int id) {
         VisitorEntity visitor = visitorService.getVisitorById(id);
@@ -56,7 +53,6 @@ public class VisitorController {
         }
     }
      
-    @CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
     @PutMapping("/updateVisitorTimeOut/{cardNo}")
     public ResponseEntity<VisitorEntity> updateVisitorTimeOut(@PathVariable int cardNo) {
         String formattedTimeOut = formatDateTime(LocalDateTime.now());
@@ -79,8 +75,6 @@ public class VisitorController {
         }
     }
 
-
-    @CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
     @PutMapping("/updateVisitor/{id}")
     public ResponseEntity<VisitorEntity> updateVisitor(@PathVariable int id, @RequestBody VisitorEntity updatedVisitor) {
         VisitorEntity visitor = visitorService.getVisitorById(id);
