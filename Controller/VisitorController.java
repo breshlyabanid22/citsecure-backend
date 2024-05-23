@@ -47,7 +47,7 @@ public class VisitorController {
     }
     @CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
     @GetMapping("/getVisitor/{id}")
-    public ResponseEntity<VisitorEntity> getVisitorById(@PathVariable long id) {
+    public ResponseEntity<VisitorEntity> getVisitorById(@PathVariable Integer id) {
         VisitorEntity visitor = visitorService.getVisitorById(id);
         if (visitor != null) {
             return ResponseEntity.ok(visitor);
@@ -82,7 +82,7 @@ public class VisitorController {
 
     @CrossOrigin(origins = "https://citsecure-log-system.onrender.com")
     @PutMapping("/updateVisitor/{id}")
-    public ResponseEntity<VisitorEntity> updateVisitor(@PathVariable long id, @RequestBody VisitorEntity updatedVisitor) {
+    public ResponseEntity<VisitorEntity> updateVisitor(@PathVariable Integer id, @RequestBody VisitorEntity updatedVisitor) {
         VisitorEntity visitor = visitorService.getVisitorById(id);
         if (visitor != null) {
             // Update first name if provided
@@ -104,7 +104,7 @@ public class VisitorController {
     }
 
     @DeleteMapping("/deleteVisitor/{id}")
-    public ResponseEntity<String> deleteVisitor(@PathVariable long id) {
+    public ResponseEntity<String> deleteVisitor(@PathVariable Integer id) {
         boolean deleted = visitorService.deleteVisitor(id);
         if (deleted) {
             return ResponseEntity.ok("Visitor deleted successfully");
