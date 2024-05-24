@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
  
 import javax.transaction.Transactional;
+
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -18,7 +20,8 @@ public class VisitorService {
     private VisitorRepository visitorRepository;
  
     public VisitorEntity addVisitor(VisitorEntity visitor) {
-        ZonedDateTime currentTime = ZonedDateTime.now();
+        ZoneId zoneId = ZoneId.of("Asia/Manila");
+        ZonedDateTime currentTime = ZonedDateTime.now(zoneId);
         visitor.setTimeIn(formatDateTime(currentTime));
         visitor.setTimeOut("");
         visitor.setStatus(1);
