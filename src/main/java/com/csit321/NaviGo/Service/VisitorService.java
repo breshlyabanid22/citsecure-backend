@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
  
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +18,7 @@ public class VisitorService {
     private VisitorRepository visitorRepository;
  
     public VisitorEntity addVisitor(VisitorEntity visitor) {
-        LocalDateTime currentTime = LocalDateTime.now();
+        ZonedDateTime currentTime = ZonedDateTime.now();
         visitor.setTimeIn(formatDateTime(currentTime));
         visitor.setTimeOut("");
         visitor.setStatus(1);
@@ -47,7 +47,7 @@ public class VisitorService {
             for (VisitorEntity visitor : visitors) {
                 if (visitor.getStatus() == 1) {
                     // Format current time and set it to timeOut
-                    visitor.setTimeOut(formatDateTime(LocalDateTime.now()));
+                    visitor.setTimeOut(formatDateTime(ZonedDateTime.now()));
                     visitor.setStatus(0);
                     return visitorRepository.save(visitor);
                 }
@@ -59,7 +59,7 @@ public class VisitorService {
     }
  
     // Helper method to format LocalDateTime to desired format (12-hour with uppercase AM/PM marker)
-    private String formatDateTime(LocalDateTime dateTime) {
+    private String formatDateTime(ZonedDateTime dateTime) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a dd/MM/yyyy");
         String formattedDateTime = dateTime.format(formatter);
         formattedDateTime = formattedDateTime.replace("am", "AM").replace("pm", "PM");

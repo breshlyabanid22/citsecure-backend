@@ -7,10 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.time.ZonedDateTime;
+import java.time.ZoneId;
 
 @RestController
 @RequestMapping("/admin")
@@ -31,7 +32,8 @@ public class VisitorController {
     @PostMapping("/addvisitor")
     public ResponseEntity<VisitorEntity> addVisitor(@RequestBody VisitorEntity visitor) {
         // Set timeIn and timeOut to current server time
-        LocalDateTime currentTime = LocalDateTime.now();
+        ZoneId zoneId = ZoneId.of("Asia/Manila");
+        ZonedDateTime currentTime = ZonedDateTime.now(zoneId);
         String formattedTime = formatDateTime(currentTime);
         visitor.setTimeIn(formattedTime);
         visitor.setStatus(visitor.getStatus());
